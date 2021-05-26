@@ -27,9 +27,9 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:tint="#FFC72C"
         app:layout_constraintBottom_toTopOf="@+id/txtTitle"
         app:layout_constraintEnd_toEndOf="@+id/txtTitle"
-        app:srcCompat="@drawable/ic_baseline_fastfood_24" />
+        app:srcCompat="@drawable/ic_baseline_fastfood_24"
+        app:tint="#FFC72C" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

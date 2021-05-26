@@ -8,6 +8,7 @@
     android:theme="@style/AppTheme.NoActionBar"
     tools:context=".HomeActivity">
 
+
     <Button
         android:id="@+id/btnLogo"
         android:layout_width="wrap_content"
@@ -25,12 +26,31 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+    <Button
+        android:id="@+id/kakao_logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_radius_white"
+        android:paddingStart="20dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="15dp"
+        android:text=" 로그아웃"
+        android:textColor="#DA291C"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnInfo"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="150dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
@@ -43,8 +63,8 @@
 
     <Button
         android:id="@+id/btnOrder"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/btn_radius_white"
@@ -55,8 +75,8 @@
 
     <Button
         android:id="@+id/btnVoiceOrder"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/btn_radius_white"
@@ -68,7 +88,7 @@
     <Button
         android:id="@+id/btnOrderList"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="150dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"

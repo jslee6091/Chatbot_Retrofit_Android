@@ -40,6 +40,7 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
     private var tts: TextToSpeech? = null
     private var speechRecognizer: SpeechRecognizer? = null
     private val REQUEST_CODE = 1
+
     val speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
         putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, packageName)
         putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
@@ -62,10 +63,6 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
         if (Build.VERSION.SDK_INT >= 23)
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.INTERNET, Manifest.permission.RECORD_AUDIO), REQUEST_CODE)
 
-
-
-        startSTT()
-
         btnSend.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val message = editMessage.getText().toString()
@@ -83,7 +80,34 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
         })
         setUpBot()
 
+        startSTT()
+
     }
+
+    fun finishorder(str: String) {
+        val nextIntent = Intent(this, OrderListActivity::class.java)
+        val list = ArrayList<OrderListData>()
+        var arr = str.split(".",",")
+        val itemlist = arrayOf("상하이스파이스","빅맥버거","치즈버거","불고기버거","사이다","콜라")
+
+        for(i in arr) {
+
+            for(j in itemlist) {
+                if(i.contains(j)) {
+
+                    var k =i.replace(("[^\\d.]").toRegex(), "")
+                    list += OrderListData(j, k.toInt())
+                }
+            }
+        }
+        // order목록을 서버로 보내기
+        // 카트 비우기
+        nextIntent.putExtra("order", list)
+        startActivity(nextIntent)
+        finish()
+    }
+
+
 
     private fun setUpBot() {
         try {
@@ -119,6 +143,9 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
                 Objects.requireNonNull(chatView!!.layoutManager)!!.scrollToPosition(messageList.size - 1)
                 speakOut(botReply)
 
+
+
+
             } else {
                 Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show()
             }
@@ -132,7 +159,7 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
     private fun speakOut(text: CharSequence) {
         tts!!.setPitch(0.6.toFloat())
         tts!!.setSpeechRate(2.0.toFloat())
-        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "id1")
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, text as String?)
 
     }
 
@@ -158,8 +185,11 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
                 }
 
                 override fun onDone(utteranceId: String) {
-                    Log.i("TextToSpeech", "On Done")
+                    Log.i("TextToSpeech", "On Done"+utteranceId)
                     GlobalScope.launch(Main) {
+
+                        if(utteranceId.contains("주문이 완료되었습니다"))
+                            finishorder(utteranceId)
                         startSTT()
                     }
 
@@ -233,4 +263,5 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
             btnSend.callOnClick()
         }
     }
+
 }

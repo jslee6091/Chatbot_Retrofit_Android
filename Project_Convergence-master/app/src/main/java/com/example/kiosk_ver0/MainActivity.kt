@@ -14,9 +14,10 @@ class MainActivity : AppCompatActivity() {
         // 3초 지연후 이동하는 로딩
         var handler = Handler()
         handler.postDelayed({
-            var intent = Intent(this,HomeActivity::class.java)
+            var intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
-        },3000)
+            finish()
 
+        },3000)
     }
 }
