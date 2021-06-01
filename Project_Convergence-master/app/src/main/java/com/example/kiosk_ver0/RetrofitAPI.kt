@@ -11,6 +11,7 @@ interface RetrofitAPI {
         @Field("userID") userID : String,
         @Field("state") state : String,
         @Field("quantity") quantity : String,
-        @Field("menu") menu : String
+        @Field("menu") menu : String,
+        @Field("phonenum") phonenum : String
     ) : Call<JsonObject>
 }
