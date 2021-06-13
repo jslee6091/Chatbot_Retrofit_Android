@@ -31,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-
         btnOrder.setOnClickListener {
             val nextIntent = Intent(this, MenuActivity::class.java)
             startActivity(nextIntent)

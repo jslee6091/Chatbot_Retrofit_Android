@@ -108,7 +108,6 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
     }
 
 
-
     private fun setUpBot() {
         try {
             val stream = this.resources.openRawResource(R.raw.order)
@@ -154,7 +153,6 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
         }
     }
 
-
     //TTS부분
     private fun speakOut(text: CharSequence) {
         tts!!.setPitch(0.6.toFloat())
@@ -199,24 +197,18 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
                     Log.i("TextToSpeech", "On Error")
                 }
             })
-
-
         } else {
             Log.e("TTS", "Initilization Failed!")
         }
     }
 
-
     // RecognitionListener 사용한 예제
     private fun startSTT() {
-
-
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this).apply {
             setRecognitionListener(recognitionListener)
             startListening(speechRecognizerIntent)
             Log.d("ff", "startlistening")
         }
-
     }
 
     private val recognitionListener = object : RecognitionListener {
@@ -253,8 +245,6 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
             if (error == SpeechRecognizer.ERROR_NO_MATCH || error == SpeechRecognizer.ERROR_SPEECH_TIMEOUT)
                 speechRecognizer?.startListening(speechRecognizerIntent)
             Toast.makeText(this@VoiceOrderActivity, message, Toast.LENGTH_SHORT).show()
-
-
         }
 
         override fun onResults(results: Bundle) {
@@ -263,5 +253,4 @@ class VoiceOrderActivity : AppCompatActivity(),OnInitListener, BotReply {
             btnSend.callOnClick()
         }
     }
-
 }

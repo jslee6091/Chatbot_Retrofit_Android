@@ -79,8 +79,6 @@ class MenuActivity : AppCompatActivity() {
                     Log.i("MenuActivity", cart.toString())
                 }
             }
-
-
         }
 
         btnCartList.setOnClickListener {
@@ -88,10 +86,5 @@ class MenuActivity : AppCompatActivity() {
             nextIntent.putExtra("cart", cart)
             startActivity(nextIntent)
         }
-
     }
-
-
-
-
 }

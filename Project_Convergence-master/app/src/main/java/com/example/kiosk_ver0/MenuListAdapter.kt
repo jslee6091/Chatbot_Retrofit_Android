@@ -11,11 +11,8 @@ import kotlinx.android.synthetic.main.item_menu_list.view.*
 
 class MenuListAdapter(val items: List<MenuListData>, val onItemClick: (Int)->Unit): RecyclerView.Adapter<MenuListAdapter.MenuListViewHolder>() {
 
-//    val TAG = javaClass.simpleName
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_menu_list, parent, false)
-//        Log.w("-----------------------------------------------", view.toString())
         return MenuListViewHolder(view)
     }
 
@@ -45,8 +42,6 @@ class MenuListAdapter(val items: List<MenuListData>, val onItemClick: (Int)->Uni
         val btnPlus = itemView.btnPlus
 
         init {
-
-//            Log.d("MenuListViewHolder", "ViewHodler init")
             itemView.setOnClickListener {
                 menuCheckBox.toggle()
                 val pos = adapterPosition
@@ -61,11 +56,9 @@ class MenuListAdapter(val items: List<MenuListData>, val onItemClick: (Int)->Uni
                         menuQuantity.text = items[pos].quantity.toString()
                     }
                 }
-//                Log.d("Adapter", "check ${items[pos]}")
             }
 
             btnMinus.setOnClickListener {
-//                Log.d("Adapter", "minus")
                 val pos = adapterPosition
                 if(items[pos].quantity ==0 ) {
                     return@setOnClickListener
@@ -78,7 +71,6 @@ class MenuListAdapter(val items: List<MenuListData>, val onItemClick: (Int)->Uni
                 }
             }
             btnPlus.setOnClickListener {
-//                Log.d("Adapter", "plus")
                 val pos = adapterPosition
                 if(!menuCheckBox.isChecked) {   // 체크가 안되어있다면 +누르면서 체크
                     menuCheckBox.toggle()
@@ -87,11 +79,6 @@ class MenuListAdapter(val items: List<MenuListData>, val onItemClick: (Int)->Uni
                 items[pos].quantity += 1
                 menuQuantity.text = items[pos].quantity.toString()
             }
-
         }
-
-
-
     }
-
 }

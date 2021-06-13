@@ -21,9 +21,6 @@ class CartListActivity : AppCompatActivity() {
 
         btnBack.setOnClickListener {
             finish()
-//
-//            val nextIntent = Intent(this, MenuActivity::class.java)
-//            startActivity(nextIntent)
         }
 
         btnPay.setOnClickListener {

@@ -40,6 +40,4 @@ class OrderListAdapter(val items: ArrayList<OrderListData>): RecyclerView.Adapte
             }
         }
     }
-
-
 }

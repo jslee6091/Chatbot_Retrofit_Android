@@ -24,11 +24,6 @@ import org.apache.commons.lang3.ObjectUtils
 
 class OrderListActivity : AppCompatActivity() {
 
-//    var items = mutableListOf<OrderListData>()
-//    init {
-//        items.plusAssign(OrderListData("주문 번호: 1", "메뉴: 빅맥", "조리 중"))
-//    }
-
     private val SET_PERMISSION = 101
 
     fun SendInfo(phonenumber : String){
@@ -141,7 +136,6 @@ class OrderListActivity : AppCompatActivity() {
         // 서버에서 주문목록+주문번호+상태 가져오기
         val order = intent.getSerializableExtra("order") as ArrayList<OrderListData>
 
-
         // telephone number 얻는 권한 없을 때 - 허가를 받아야 함
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.READ_PHONE_STATE
@@ -166,5 +160,4 @@ class OrderListActivity : AppCompatActivity() {
             startActivity(nextIntent)
         }
     }
-
 }
