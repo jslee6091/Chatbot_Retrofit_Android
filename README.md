@@ -11,3 +11,4 @@
   - 챗봇 - Google Dialogflow
   - Retrofit - POS 웹 서버로 데이터 전송
   - 주문 데이터 저장
+- POS 웹 서버 코드 URL : https://github.com/jslee6091/python_flask
